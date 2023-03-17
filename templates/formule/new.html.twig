@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle formule{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Créer une nouvelle formule</h1>
+
+    {{ include('formule/_form.html.twig') }}
+
+    <a class="btn" href="{{ path('app_formule_index') }}">Précédent</a>
+</div>
+    <style>
+    .btn {
+        background-color:B87333;
+        color:FFFFFF;
+       
+    }
+     a:hover {
+  color:000000;
+}
+h1 {
+    font-family: Arial;
+    text-align: center;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    Accueil
+    
+{% endblock %}
+{% block content %}
+    <div class="container">
+        {# Titre de la page #}
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Liste des plats
+                                    
+                </h1>
+            </div>
+        </div>
+        <div class="row alert " role="alert">
+            <div class="col-xs-9 col-sm-10"></div>
+            <div class="col-xs-3 col-sm-2"></div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    {# <th scope="col">#</th> #}
+                    <th scope="col">
+                        Nom du plat
+                                            
+                    </th>
+                    <th scope="col">
+                        Description
+                                            
+                    </th>
+                    <th scope="col">
+                        Prix
+                                            
+                    </th>
+                    <th scope="col">{# Bouton d'action - Supprimer #}</th>
+                    <th scope="col">{# Bouton d'action - Modifier #}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for plat in plats %}
+                    <tr>
+                        {# <th scope="row">
+                                                                        {{ plat.id }}
+                                                                    </th> #}
+                        <td>
+                            {{ plat.title }}
+                        </td>
+                        <td>
+                            {{ plat.description|nl2br }}
+                        </td>
+                        <td>
+                            {{ plat.price }}
+                        </td>
+                        <td>
+                            <a href="{{ path('plat_remove', {'id': plat.id}) }}" role="button" class="btn ">
+                                Supprimer
+                                                            
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ path('plat_edit', {'id': plat.id}) }}" role="button" class="btn ">
+                                Modifier
+                                                            
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ path('plat_edit') }}" role="button" class="btn  text-right">
+            <i class="fa fa-plus fa-fw"></i>
+            Ajouter un nouveau plat 
+                
+        </a>
+    </div>
+    <style>
+     .btn {
+        background-color:B87333;
+        color:FFFFFF;
+        
+    }
+    .page-header {
+    font-family: Arial;
+    text-align: center;
+    }
+    
+</style>
+{% endblock %}
+{% block stylesheets %}{% endblock %}

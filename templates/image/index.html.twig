@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Galerie d'image{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Galerie d'image</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                {# <th>Id</th> #}
+                <th>Nom</th>
+                <th>ImageName</th>
+                <th>ImageFile</th>
+                <th>Mis à jour</th>
+                <th>Créer</th>
+                {# <th>actions</th> #}
+            </tr>
+        </thead>
+        <tbody>
+        {% for image in images %}
+            <tr>
+                {# <td>{{ image.id }}</td> #}
+                <td>{{ image.title }}</td>
+                <td>{{ image.imageName }}</td>
+                <td><img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{ image.imageName }}"></td>
+                <td>{{ image.updateAt ? image.updateAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ image.createAt ? image.createAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a class="btn" href="{{ path('app_image_show', {'id': image.id}) }}">Afficher</a>
+                    <a class="btn" href="{{ path('app_image_edit', {'id': image.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn" href="{{ path('app_image_new') }}">Insérer une nouvelle image</a>
+</div>
+<style>
+    .btn {
+        background-color:B87333;
+        color:FFFFFF;
+        margin-top:2%;
+    }
+     a:hover {
+  color:000000;
+}
+h1 {
+    font-family: Arial;
+    text-align: center;
+}
+</style>
+{% endblock %}

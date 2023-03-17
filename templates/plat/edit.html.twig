@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Plat{% endblock %}
+
+{% block content %}
+<div class="container">
+    {# Titre de la page #}
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">{% if mode == 'new' %}Ajouter un plat{% else %}Modification{% endif %} </h1>
+        </div>
+    </div>
+
+    
+        {{ form_start(form, {'method': 'POST', 'attr': {'novalidate': 'novalidate' }} ) }}
+        {{ form_label(form.title, 'Nom du plat', {'label_attr': {'class': 'font '}}) }}
+                {{ form_widget(form.title, { 'attr': {'class': 'form-control'} }) }}
+         {{ form_label(form.description, 'Description', {'label_attr': {'class': 'font '}}) }}
+                {{ form_widget(form.description, { 'attr': {'class': 'form-control'} }) }}
+         {{ form_label(form.price, 'Prix', {'label_attr': {'class': 'font '}}) }}
+                {{ form_widget(form.price, { 'attr': {'class': 'form-control'} }) }}
+         {{ form_label(form.category, 'Catégorie', {'label_attr': {'class': 'font '}}) }}
+                {{ form_widget(form.category, { 'attr': {'class': 'form-control'} }) }}
+                
+        {# ------------------------- #}
+        {#      INFOS GÉNÉRALES      #}
+        {# ------------------------- #}
+        {% if mode == 'update' %}
+        <div class="panel-heading" >
+            {# <h4 class="panel-title" id="contact-panel-title">
+                <a class="fa" data-group data-toggle="collapse" href="#info"><i class="fa fa-angle-double-down fa-fw info1"></i> Informations générales</a>
+            </h4> #}
+        </div>
+        {% endif %}
+
+        {# <div id="info" class="panel-collapse">
+            
+            {{ include('_helpers/form/_group.html.twig', {
+                        'field': form['title']
+                    }) }}
+
+            {{ include('_helpers/form/_group.html.twig', {
+                        'field': form['description']
+                    }) }}
+            
+            {{ include('_helpers/form/_group.html.twig', {
+                        'field': form['price']
+                    }) }}
+            
+            {{ include('_helpers/form/_group.html.twig', {
+                        'field': form['category']
+                    }) }}
+                    
+        </div> #}
+
+        {# -------------------------------- #}
+        {#      INFOS COMPLÉMENTAIRES       #}
+        {# -------------------------------- #}
+        
+        {% if mode == 'update' %}
+        <div class="panel-heading" >
+            {# <h4 class="panel-title">
+                <a data-group data-toggle="collapse" href="#info-compl"><i class="fa fa-plus fa-fw"> Informations complémentaires</a>
+            </h4> #}
+        </div>
+        <div id="info-compl" class="panel-collapse table-responsive">
+            <table class="table table-condensed fiche">
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+
+        <div class="row">
+            {% if not form.vars.valid %}
+            <div class="col-md-8 error">
+                <i class="fa fa-exclamation-triangle fa-fw">
+                Le formulaire contient des erreurs. Vérifiez les différentes rubriques.
+            </div>
+            {% else %}
+                <div class="col-md-8"></div>
+            {% endif %} 
+            <div class="col-md-4 text-right">
+                {{ form_widget(form.submit, { 'attr': {'class': 'btn '} }) }}
+            </div>
+        </div>
+
+        {{ form_widget(form) }}
+
+        {{ form_end(form) }}
+
+    </div>
+
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        /* .container{
+            width: 100%;
+            border: 1px solid #ddd;
+            padding-top: 13px;
+            border-radius: 10px;
+            background-color: #F9F9FA;
+            color: #413C49;
+            margin-top: 20px;
+            padding-bottom: 13px;
+        } */
+
+        .error{
+            color: red;
+            font-weight: 600;
+        }
+
+        .has-error ul{
+            color: red;
+            list-style-type: none;
+            padding-left: 0;
+            padding-top: 5px;
+            font-style: italic;
+        }
+
+        .btn-lg{
+            color: #fff;
+            margin: auto;
+            margin-top: 30px;
+        }
+        .btn {
+        background-color:B87333;
+        color:FFFFFF; 
+        margin-top: 10%; 
+    }
+        .fa {
+        color:6B4E3D;
+     }
+     .page-header {
+    font-family: Arial;
+    text-align: center;
+    }
+  
+    </style>
+{% endblock %}

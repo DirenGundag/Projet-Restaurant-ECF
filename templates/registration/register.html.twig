@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block content %}
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+
+    
+<div class="cadre">
+
+<h1 class="titreH1">Inscrivez-vous</h1>
+    {{ form_start(registrationForm) }}
+    {{ form_row(registrationForm.lastname) }}
+    {{ form_row(registrationForm.firstname) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.password, {
+            label: 'Mot de passe'
+        }) }}
+        {{ form_row(registrationForm.telnum) }}
+        {{ form_row(registrationForm.nombrePersonne) }}
+        {{ form_row(registrationForm.allergies) }}
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <div class="bouton">
+        <button type="submit" class="btn ">Valider</button>
+        </div>
+    {{ form_end(registrationForm) }}
+</div>
+    <style>
+    .cadre {
+        border: 4px solid black;
+        padding: 70px;
+        width: 50%;
+        margin-top:5%;
+        margin-left:27%;
+        margin-bottom:5%;
+        border-radius:10%;
+        height:142%;
+     }
+    
+    /* body {
+        background-image: url("https://media.discordapp.net/attachments/971727249474732053/1082685933213728909/food-2879202_640.jpg?width=885&height=586");
+        background-repeat:no-repeat;
+        background-size:140%;
+    } */
+
+    .titreH1 {
+        text-align:center;
+        margin-top:-10%;
+        font-family: Arial;
+    }
+
+    .bouton {
+        margin-left:40%;
+        margin-top:15%;
+    }
+    .btn {
+        background-color:B87333;
+        color:FFFFFF;
+       
+    }
+     a:hover {
+  color:000000;
+}
+</style>
+{% endblock %}

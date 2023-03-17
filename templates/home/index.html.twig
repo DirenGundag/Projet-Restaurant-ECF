@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+<h1 class="titrehome">Bienvenue !</h1>
+<div class="imageaccueil1">
+<img src="https://media.discordapp.net/attachments/971727249474732053/1083775429845983282/restaurant-7-mers-bandeau.jpg?width=1440&height=451" alt="Texte alternatif" width="1263" height="400">
+</div>
+<br>
+<br>
+<div class="imageaccueil2">
+<img src="https://media.discordapp.net/attachments/971727249474732053/1083781625806082098/chef-cooking.jpg?width=801&height=586" alt="Texte alternatif" width="500" height="400">
+</div>
+<br>
+<br>
+<div class="textesite">
+<h3 class="titretextesite">Nos origines</h3>
+<p>Arnaud Michant ouvre son troisième restaurant en Savoie, le Quai Antique, à Chambéry. <br>
+Il veut faire découvrir les produits et les producteurs locaux à travers une cuisine <br>
+sans artifice pour le déjeuner et le dîner. 
+</p>
+<p>Pour Arnaud Michant, ce restaurant est une promesse de voyage dans son univers culinaire.<br>
+ Le Quai Antique sera un lieu convivial, chaleureux et accueillant pour les gourmets et <br>
+ les amateurs de cuisine savoyarde traditionnelle. Les plats seront préparés avec des <br>
+ ingrédients frais, locaux et de saison, en utilisant des techniques culinaires modernes et innovantes.
+</p>
+<p> En résumé, Le Quai Antique sera une nouvelle étape dans le parcours culinaire <br>
+d'Arnaud Michant, une promesse de découverte et de dégustation de produits <br> locaux de qualité.
+</p>
+</div>
+<h3 class="titregalerie">Nos spécialités </h3>
+<div class="imageplat">
+ </div>
+<div class="container text-center">
+  <div class="row row-cols-3 ">
+  
+    {% for image in images %}
+<div class="card col" >
+ <img class="image" src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{ image.imageName }}">
+  <div class="card-body">
+    <p class="card-text">{{ image.title}}</p>
+  </div>
+</div>
+ {% endfor %}
+</div>
+  </div>
+</div> 
+
+<a class="btn" href="{{ path('app_reservation_new') }}">Réservation</a>
+
+<style>
+    .titrehome {
+        text-align:center;
+        margin-top:2%;
+        font-family: Arial;
+     }
+    .imageaccueil1 {
+        margin-left:-1.2%;
+        margin-top:2%;
+     }
+    .imageaccueil2 {
+        margin-left:5%;
+        margin-top:5%;
+        
+     }
+    .titretextesite {
+        font-family: Arial;
+     }
+     .textesite {
+        margin-left:49%;
+        margin-top:-35%;
+        font-family: Lora;
+     }
+    .imageplat {
+        margin-top:3%;
+        
+     }
+    .image {
+        margin-left:1%;
+        margin-top:1%;
+        
+     }
+    .titregalerie {
+        margin-top:6%;
+        margin-left:4%;
+        font-family: Arial;
+     }
+      .btn {
+        background-color:B87333;
+        color:FFFFFF;
+        margin-top:3%;
+        margin-left:45%;
+    }
+     a:hover {
+  color:000000;
+}
+</style>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}

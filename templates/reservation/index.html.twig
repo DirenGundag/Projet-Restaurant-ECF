@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservation {% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Réservation </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                {# <th>Id</th> #}
+                <th>Nombre de Personne</th>
+                <th>Heure</th>
+                <th>Date</th>
+                <th>Allergies</th>
+                {# <th>actions</th> #}
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr>
+                {# <td>{{ reservation.id }}</td> #}
+                <td>{{ reservation.nombreCouvert }}</td>
+                <td>{{ reservation.heure ? reservation.heure|date('H:i') : '' }}</td>
+                <td>{{ reservation.date ? reservation.date|date('Y-m-d') : '' }}</td>
+                <td>{{ reservation.allergies }}</td>
+                <td>
+                    <a class="btn" href="{{ path('app_reservation_show', {'id': reservation.id}) }}">Afficher</a>
+                    <a class="btn" href="{{ path('app_reservation_edit', {'id': reservation.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn" href="{{ path('app_reservation_new') }}">Nouvelle réservation</a>
+</div>
+    <style>
+    .btn {
+        background-color:B87333;
+        color:FFFFFF;
+        
+    }
+     a:hover {
+  color:000000;
+}
+h1 {
+    font-family: Arial;
+    text-align: center;
+}
+</style>
+{% endblock %}

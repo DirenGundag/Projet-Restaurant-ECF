@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Menu {% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Menu </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                {# <th>Id</th> #}
+                {# <th>Nom</th> #}
+                {# <th>actions</th> #}
+            </tr>
+        </thead>
+        <tbody>
+        {% for menu in menus %}
+            <tr>
+                {# <td>{{ menu.id }}</td> #}
+                <td>{{ menu.title }}</td>
+                <td>
+                    <a class="btn" href="{{ path('app_menu_show', {'id': menu.id}) }}">Afficher</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <a class="btn" href="{{ path('app_menu_edit', {'id': menu.id}) }}">Modifier</a>
+                {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% if is_granted('ROLE_ADMIN') %}
+    <a class="btn" href="{{ path('app_menu_new') }}">Créer un nouveau menu</a>
+{% endif %}
+    </div>
+    <style>
+    .btn {
+        background-color:B87333;
+        color:FFFFFF;
+        
+    }
+     a:hover {
+  color:000000;
+}
+h1 {
+    font-family: Arial;
+    text-align: center;
+}
+</style>
+{% endblock %}

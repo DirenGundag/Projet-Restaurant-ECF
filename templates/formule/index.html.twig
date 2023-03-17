@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formule {% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Formule </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                {# <th>Id</th> #}
+                <th>Description</th>
+                <th>Prix</th>
+                {# <th>actions</th> #}
+            </tr>
+        </thead>
+        <tbody>
+        {% for formule in formules %}
+            <tr>
+                {# <td>{{ formule.id }}</td> #}
+                <td>{{ formule.description }}</td>
+                <td>{{ formule.price }}</td>
+                <td>
+                    <a class="btn" href="{{ path('app_formule_show', {'id': formule.id}) }}">Afficher</a>
+                    <a class="btn" href="{{ path('app_formule_edit', {'id': formule.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn" href="{{ path('app_formule_new') }}">Ajouter une nouvelle formule</a>
+</div>
+    <style>
+    .btn {
+        background-color:B87333;
+        color:FFFFFF;
+       
+    }
+     a:hover {
+  color:000000;
+}
+h1 {
+    font-family: Arial;
+    text-align: center;
+}
+</style>
+{% endblock %}

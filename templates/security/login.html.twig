@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+    <div class="cadre">
+    <h1 class="titreH1">Connectez-vous</h1>
+    <div>
+    {# <label for="inputEmail">Email</label> #}
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="champ1" autocomplete="email" required autofocus placeholder="Entrez votre adresse mail">
+    <br>
+    </div>
+    <div>
+    {# <label for="inputPassword">Password</label> #}
+    <input type="password" name="password" id="inputPassword" class="champ2" autocomplete="current-password" required placeholder="Mot de passe">
+    <br>
+    </div>
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+    
+
+    <style>
+    .cadre {
+        border: 4px solid black;
+        padding: 70px;
+        width: 40%;
+        margin-top:5%;
+        margin-left:30%;
+        margin-bottom:5%;
+        border-radius:10%;
+        height:62%;
+     }
+    .titreH1 {
+        text-align:center;
+        margin-top:-10%;
+        font-family: Arial;
+    }
+    .champ1 {
+        margin-top:10%;
+        text-align:center;
+        width:300px;
+        margin-left:7%;
+        border:2px solid;
+    }
+    .champ2 {
+        margin-top:15%;
+        text-align:center;
+        width:300px;
+        margin-left:7%;
+        border:2px solid;
+    }
+    .champ3 {
+        margin-top:15%;
+        text-align:center;
+    }
+     .btn {
+        background-color:B87333;
+        color:FFFFFF;
+    }
+    /* body {
+        background-image: url("https://media.discordapp.net/attachments/971727249474732053/1082685933213728909/food-2879202_640.jpg?width=885&height=586");
+        background-repeat:no-repeat;
+        background-size:100%;
+    } */
+</style>
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+    #}
+
+    <div class="champ3">
+    <button class="btn btn-lg btn " type="submit">
+        Connexion
+    </button>
+    </div>
+   </div>
+</form>
+{% endblock %}
