@@ -87,8 +87,7 @@
             "@auto-scripts"
         ],
         "compile": [
-            "php bin/console doctrin:schema:update --force",
-            "php bin/console doctrine:fixtures:load --no-interaction --env=PROD"
+            "php bin/console doctrin:schema:update --force"
         ]
     },
     "conflict": {
