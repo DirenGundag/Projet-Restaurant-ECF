@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" 
-href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    {# <link rel="stylesheet" 
+href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> #}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     {% block stylesheets %}
     {% endblock %}
 
@@ -25,7 +26,7 @@ href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" int
 
 <body>
 
-    <nav class="navbar navbar-expand-lg ">
+    <nav class="navbar navbar-expand-lg navbar-dark "> 
         <a class="navbar-brand" href="{{ path('app_home') }}"><img src="https://media.discordapp.net/attachments/971727249474732053/1084602387072811058/Capture_d_ecran_2023-03-12_232045-removebg-preview.png?width=957&height=586" alt="description de l'image" width=150;></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobileMenu" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -49,6 +50,9 @@ href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" int
                 </li>
                 <li class="nav-item {{ app.request.get('_route') == 'app_image_index' ? 'active' : '' }}">
                     <a class="nav-link" href="{{ path('app_image_index') }}">Galerie d'image</a>
+                </li>
+                <li class="nav-item {{ app.request.get('_route') == 'app_seuil_maximum_index' ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ path('app_seuil_maximum_index') }}">Seuil Maximum</a>
                 </li>
                 {% endif %}
                  <li class="nav-item {{ app.request.get('_route') == 'app_reservation_index' ? 'active' : '' }}">
@@ -90,14 +94,14 @@ href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" int
 
 <div class="info">
 <h4 class="titre">Quai Antique</h4>
-<p>17 avenue de la paix Beaufort - Savoie </p>
+<p class="adresse">17 avenue de la paix Beaufort - Savoie </p>
 <p class="horaire">Ouvert tous les jours de 11H00 à 14H00 et de 18H00 à 23H00 hors jours fériés.</p>
 <p class="tel">Tél: 01 00 00 00 00 </p>
 </div>
 
 <div class="container">
 <ul class="foote_bottom_ul_amrc">
-<li>Mentions légales</li>
+<li class="mention">Mentions légales</li>
 <li class="espace">Politique de confidentialité</li>
 <li class="espace">Newsletter</li>
 <li class="espace">Contact</li>
@@ -171,6 +175,34 @@ footer p { font-size:13px; color:#CCC; padding-bottom:0px; margin-bottom:8px;}
     color:FFFFFF;
     margin-left:4%;   
 }
+@media screen and (max-width: 426px)  {
+    .titre{
+    margin-left: 0%;
+}
+.info{
+    margin-left: 30%;
+}
+.adresse{
+    width: 110%;
+    margin-left: -10%;
+}
+.container{
+    width: 50%;
+}
+.horaire{
+    margin-left: -23%;
+    font-size: 9px;
+}
+.tel{
+    margin-left:10%;
+}
+.espace {
+    font-size:12px;
+}
+.mention {
+    font-size:12px;
+}
+}
 .navbar{
     background-color:6B4E3D;
        
@@ -191,7 +223,7 @@ footer p { font-size:13px; color:#CCC; padding-bottom:0px; margin-bottom:8px;}
             border-radius: 10px;
             background-color: #F9F9FA;
             color: #413C49;
-            margin-top: 20px;
+            margin-top: 50px;
             padding-bottom: 13px;
         }
 

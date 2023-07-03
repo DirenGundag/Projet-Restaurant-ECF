@@ -20,9 +20,9 @@
                 {# <td>{{ menu.id }}</td> #}
                 <td>{{ menu.title }}</td>
                 <td>
-                    <a class="btn" href="{{ path('app_menu_show', {'id': menu.id}) }}">Afficher</a>
+                    <a class="btn boutonafficher" href="{{ path('app_menu_show', {'id': menu.id}) }}">Afficher</a>
                     {% if is_granted('ROLE_ADMIN') %}
-                    <a class="btn" href="{{ path('app_menu_edit', {'id': menu.id}) }}">Modifier</a>
+                    <a class="btn boutonmodif" href="{{ path('app_menu_edit', {'id': menu.id}) }}">Modifier</a>
                 {% endif %}
                 </td>
             </tr>
@@ -49,6 +49,16 @@
 h1 {
     font-family: Arial;
     text-align: center;
+}
+@media screen and (max-width: 426px)  {
+    .boutonmodif{
+        margin-top: 10%;
+        width: 55%;
+        margin-left: 40%;
+    }
+    .boutonafficher{
+        margin-left: 40%;
+    }
 }
 </style>
 {% endblock %}

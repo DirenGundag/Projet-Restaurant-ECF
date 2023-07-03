@@ -5,12 +5,12 @@
 {% block content %}
 <h1 class="titrehome">Bienvenue !</h1>
 <div class="imageaccueil1">
-<img src="https://media.discordapp.net/attachments/971727249474732053/1083775429845983282/restaurant-7-mers-bandeau.jpg?width=1440&height=451" alt="Texte alternatif" width="1263" height="400">
+<img class="img1" src="https://media.discordapp.net/attachments/971727249474732053/1083775429845983282/restaurant-7-mers-bandeau.jpg?width=1440&height=451" alt="Texte alternatif" width="1263" height="400">
 </div>
 <br>
 <br>
 <div class="imageaccueil2">
-<img src="https://media.discordapp.net/attachments/971727249474732053/1083781625806082098/chef-cooking.jpg?width=801&height=586" alt="Texte alternatif" width="500" height="400">
+<img  class="img2" src="https://media.discordapp.net/attachments/971727249474732053/1083781625806082098/chef-cooking.jpg?width=801&height=586" alt="Texte alternatif" width="500" height="400">
 </div>
 <br>
 <br>
@@ -82,7 +82,7 @@ d'Arnaud Michant, une promesse de découverte et de dégustation de produits <br
         
      }
     .titregalerie {
-        margin-top:6%;
+        margin-top:8%;
         margin-left:4%;
         font-family: Arial;
      }
@@ -94,6 +94,40 @@ d'Arnaud Michant, une promesse de découverte et de dégustation de produits <br
     }
      a:hover {
   color:000000;
+}
+
+@media screen and (max-width: 426px)  {
+    .img1{
+    width: 100%;
+    height: 40%;
+}
+.img2{
+    width: 100%;
+    height: 40%;
+}
+.imageaccueil2 {
+        margin-left:0%;
+        
+     }
+     .imageaccueil1 {
+        margin-left:0%;
+        
+     }
+
+     .textesite {
+        margin-left:0%;
+        margin-top:2%;
+        font-family: Lora;
+     }
+     .image {
+      width: 200%;
+      margin-left: -60%;
+     }
+     .card-text{
+      font-size: 20px;
+      display: none;
+     }
+
 }
 </style>
 {% endblock %}

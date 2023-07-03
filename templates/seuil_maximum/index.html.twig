@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SeuilMaximum index{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Seuil Maximum</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                {# <th>Id</th> #}
+                <th>Seuil Maximum</th>
+                {# <th>actions</th> #}
+            </tr>
+        </thead>
+        <tbody>
+        {% for seuil_maximum in seuil_maximums %}
+            <tr>
+                {# <td>{{ seuil_maximum.id }}</td> #}
+                <td>{{ seuil_maximum.seuilmaximum }}</td>
+                <td>
+                    <a class="btn" href="{{ path('app_seuil_maximum_show', {'id': seuil_maximum.id}) }}">Afficher</a>
+                    <a class="btn" href="{{ path('app_seuil_maximum_edit', {'id': seuil_maximum.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn" href="{{ path('app_seuil_maximum_new') }}">Créer un nouveau seuil de réservation</a>
+</div>
+
+<style>
+.btn {
+    background-color:B87333;
+    color:FFFFFF;
+    
+}
+ a:hover {
+color:000000;
+}
+h1 {
+font-family: Arial;
+text-align: center;
+}
+</style>
+{% endblock %}

@@ -15,7 +15,7 @@ class Reservation
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $nombreCouvert = null;
+    private ?int $nombreCouvert = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date = null;
@@ -32,12 +32,12 @@ class Reservation
         return $this->id;
     }
 
-    public function getNombreCouvert(): ?string
+    public function getNombreCouvert(): ?int
     {
         return $this->nombreCouvert;
     }
 
-    public function setNombreCouvert(string $nombreCouvert): self
+    public function setNombreCouvert(int $nombreCouvert): self
     {
         $this->nombreCouvert = $nombreCouvert;
 

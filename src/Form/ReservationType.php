@@ -10,28 +10,38 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class ReservationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        ->add('nombreCouvert', TextType::class, [
+        ->add('nombreCouvert', IntegerType::class, [
             'label' => 'Nombre de personne',
+            'required' => true,
             'constraints' => [
                 new NotBlank([
                     'message' => 'Ce champ ne peut être vide'
                 ])
             ]])
-            ->add('heure', TimeType::class, [
-                'label' => 'Choisir une heure ',
-                'widget' => 'single_text', 
-            ])
             ->add('date', DateType::class, [
-                'label' => 'Choisir une date ',
+                'label' => 'Choisir une date et une heure ',
                 'widget' => 'single_text', 
                 'format' => 'yyyy-MM-dd',
                 'data' => new \DateTime(),
+            ])
+            ->add('heure', TimeType::class, [
+                'label' => false,
+                'widget' => 'choice',
+                'input' => 'datetime',
+                'hours' => ['11', '12', '13', '18','19', '20', '21', '22'],
+                'minutes' => range(0, 45, 15), // Sélection par tranche de 15 minutes
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Ce champ ne peut pas être vide'
+                    ])
+                ]
             ])
             ->add('allergies')
         ;

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SeuilMaximum{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Seuil Maximum</h1>
+
+    <table class="table">
+        <tbody>
+            {# <tr>
+                <th>Id</th>
+                <td>{{ seuil_maximum.id }}</td>
+            </tr> #}
+            <tr>
+                <th>Seuil Maximum</th>
+                <td>{{ seuil_maximum.seuilmaximum }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn" href="{{ path('app_seuil_maximum_index') }}">Précédent</a>
+
+    <a class="btn" href="{{ path('app_seuil_maximum_edit', {'id': seuil_maximum.id}) }}">Modifier</a>
+
+    {{ include('seuil_maximum/_delete_form.html.twig') }}
+</div>
+
+<style>
+.btn {
+   background-color:B87333;
+   color:FFFFFF;
+   margin-top: 2%;
+   margin-left: 2%;
+   
+}
+a:hover {
+color:000000;
+}
+h1 {
+font-family: Arial;
+text-align: center;
+}
+</style>
+{% endblock %}

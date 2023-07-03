@@ -23,7 +23,7 @@
                 <td>{{ formule.price }}</td>
                 <td>
                     <a class="btn" href="{{ path('app_formule_show', {'id': formule.id}) }}">Afficher</a>
-                    <a class="btn" href="{{ path('app_formule_edit', {'id': formule.id}) }}">Modifier</a>
+                    <a class="btn boutonmodif" href="{{ path('app_formule_edit', {'id': formule.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -48,6 +48,12 @@
 h1 {
     font-family: Arial;
     text-align: center;
+}
+@media screen and (max-width: 426px)  {
+    .boutonmodif{
+        margin-top: 10%;
+        width: 85%;
+    }
 }
 </style>
 {% endblock %}

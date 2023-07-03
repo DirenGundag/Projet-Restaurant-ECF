@@ -1,4 +1,9 @@
 {{ form_start(form) }}
+{% for flashError in app.flashes('error') %} 
+            <div class="alert alert-danger"> 
+            {{ flashError }}
+            </div> 
+            {% endfor %}
     {{ form_widget(form) }}
     <button class="btn">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

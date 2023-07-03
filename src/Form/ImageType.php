@@ -9,6 +9,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 
 class ImageType extends AbstractType
@@ -16,8 +18,22 @@ class ImageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title')
-            ->add('imageName')
+        ->add('title', TextType::class, [
+            'label' => 'Titre',
+            'constraints' => [
+                new NotBlank([
+                    'message' => 'Ce champ ne peut être vide'
+                ])
+            ]
+                ])
+            ->add('imageName', TextType::class, [
+                'label' => 'Nom Image',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Ce champ ne peut être vide'
+                    ])
+                ]
+                ])
             ->add('updateAt', DateType::class, [
                 'label' => 'Mis à jour le ',
                 'widget' => 'single_text', 
@@ -30,7 +46,9 @@ class ImageType extends AbstractType
                 'format' => 'yyyy-MM-dd',
                 'data' => new \DateTime(),
             ])
-            ->add('imageFile', FileType::class)
+            ->add('imageFile', FileType::class, [
+                'label' => 'Fichier',
+            ])
             // ->add('imageFile', FileType::class, [
             //     'label' => 'Image de plat (Des fichiers images uniquement)',
             //     // unmapped means that this field is not associated to any entity property

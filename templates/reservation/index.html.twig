@@ -10,10 +10,10 @@
         <thead>
             <tr>
                 {# <th>Id</th> #}
-                <th>Nombre de Personne</th>
-                <th>Heure</th>
-                <th>Date</th>
-                <th>Allergies</th>
+                <th class="personne">Nombre de Personne</th>
+                <th class="heure">Heure</th>
+                <th class="date">Date</th>
+                <th class="allergies">Allergies</th>
                 {# <th>actions</th> #}
             </tr>
         </thead>
@@ -26,8 +26,8 @@
                 <td>{{ reservation.date ? reservation.date|date('Y-m-d') : '' }}</td>
                 <td>{{ reservation.allergies }}</td>
                 <td>
-                    <a class="btn" href="{{ path('app_reservation_show', {'id': reservation.id}) }}">Afficher</a>
-                    <a class="btn" href="{{ path('app_reservation_edit', {'id': reservation.id}) }}">Modifier</a>
+                    <a class="btn btnmobile" href="{{ path('app_reservation_show', {'id': reservation.id}) }}">Afficher</a>
+                    <a class="btn btnmobile" href="{{ path('app_reservation_edit', {'id': reservation.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -52,6 +52,26 @@
 h1 {
     font-family: Arial;
     text-align: center;
+}
+@media screen and (max-width: 426px)  {
+    .personne{
+        font-size: 12px;
+        margin-left: -150%;
+    }
+    .heure{
+        font-size: 12px;
+    }
+    .date{
+        font-size: 12px;
+    }
+    .allergies{
+        font-size: 12px;
+    }
+    .btnmobile{
+        width: 60px;
+        font-size: 10px;
+        margin-bottom: 10px;
+    }
 }
 </style>
 {% endblock %}
